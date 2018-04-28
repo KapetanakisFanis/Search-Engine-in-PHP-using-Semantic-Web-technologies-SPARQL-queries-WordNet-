@@ -61,43 +61,43 @@
        $synonew1 = [];
        $queryInput = $terms[$i];
                   if(($word!="hypernymys") && ($word!="hyponymys")){
-                      $cmd = 'wn ' . ' ' . $queryInput . ' ' . '-synsn';} //entolh sto wordnet gia synwnyma
+                      $cmd = 'wn ' . ' ' . $queryInput . ' ' . '-synsn';} 
                     if($word == "hypernymys"){
-            $hypernull = 2;   //allagh timhs otan paththei
-             $cmd = 'wn ' . ' ' . $queryInput . ' -n1 ' . '-hypen';} //entolh sto wordnet gia yperwnyma
+            $hypernull = 2;   
+             $cmd = 'wn ' . ' ' . $queryInput . ' -n1 ' . '-hypen';} 
                            
                 if($word == "hyponymys"){
-             $hyponull = 2;  //allagh timhs otan paththei
-           $cmd = 'wn ' . ' ' . $queryInput . ' -n1 ' . '-hypon'; } //entolh sto wordnet gia ypwnyma        
+             $hyponull = 2;  
+           $cmd = 'wn ' . ' ' . $queryInput . ' -n1 ' . '-hypon'; }      
      
     
-               $result = shell_exec($cmd); //ektelesh entolhs sto wordnet
+               $result = shell_exec($cmd); 
     
-          preg_match_all('/(?<=\=>\s)(.*)/', $result, $syno); //vriskei sygkekrimena kommatia apo to keimeno
-          $syno = array_map("unserialize", array_unique(array_map("serialize", $syno))); //svhnei ta idia ston 2d pinaka
-          $synonew = array_reduce($syno, 'array_merge', array()); //o pinakas ginetai monodiastatos
+          preg_match_all('/(?<=\=>\s)(.*)/', $result, $syno); 
+          $syno = array_map("unserialize", array_unique(array_map("serialize", $syno))); 
+          $synonew = array_reduce($syno, 'array_merge', array()); 
          
          foreach ($synonew as $key => $value) {
-           $comma = explode(",", $value);                //spaei ta periexomena ths kathe thesis sto komma an yparxei
+           $comma = explode(",", $value);                
            $synonew1 = array_merge((array)$synonew1, (array)$comma); 
              }
 
-           $synonew1 = array_unique($synonew1);   //svhnei ta idia
-           $synonew1 = array_values($synonew1);   //ftiaxnei tis theseis
+           $synonew1 = array_unique($synonew1);   
+           $synonew1 = array_values($synonew1);   
              
              foreach ($synonew1 as $key => $value) {
-               $value = trim($value);             //svhnei ta kena
+               $value = trim($value);            
              }
 
               if($synonew1[0]!=""){
-              $allarray = array_merge((array)$allarray, (array)$synonew1[0]);  //pairnei mono to 1o an yparxei
+              $allarray = array_merge((array)$allarray, (array)$synonew1[0]);  
                                    }
               if($synonew1[1]!=""){                     
-              $allarray = array_merge((array)$allarray, (array)$synonew1[1]); //pairnei mono to 2o an yparxei
+              $allarray = array_merge((array)$allarray, (array)$synonew1[1]); 
                                    }
             
               }
-             $allarray = array_merge((array)$allarray, (array)$terms);  //enwnei kai tis lexeis-kleidia
+             $allarray = array_merge((array)$allarray, (array)$terms);  
 
              // print_r($allarray);
               $nc = 0;
@@ -188,7 +188,7 @@
            echo "<h3><b><a href=".$articlesourcelink.">$articletitle</a></b></h3>";
            echo "$articledescription";
            echo "<br><br>";
-             //allagh timwn otan yparxei estw kai ena apotelesma 
+             
              if(($word!="hypernymys") && ($word!="hyponymys")){
              $synonull=1;} 
 
@@ -198,7 +198,7 @@
               if($word == "hyponymys"){ 
                 $hyponull = 3;}
 
-           if($page == "" && $mrs == 0)   //koumpi show more results
+           if($page == "" && $mrs == 0)   
            {
                 if(($word!="hypernymys") && ($word!="hyponymys")){
            ?>            
@@ -237,11 +237,11 @@
                  $mrs++;
 
 
-          }//kleinei to while
+          }
           $cou = odbc_num_rows($rs);
          
          
-           $totalpages = ceil($cou / 3); //pagination
+           $totalpages = ceil($cou / 3); 
                    echo "<br><br>"; 
                for($j = 1; $j <= $totalpages; $j++)
                    {   
@@ -259,7 +259,7 @@
                    }
                      
                   
-                 if(($word!="hypernymys") && ($word!="hyponymys") && ($synonull == 0)){ //einai sta synwnyma kai den yparxei apotelesma
+                 if(($word!="hypernymys") && ($word!="hyponymys") && ($synonull == 0)){ 
                   $hypernull = 1;
                   $hyponull = 1; 
           echo "<b>No results found!</b><br><br>";
@@ -272,13 +272,13 @@
              <a href="search.php?k=<?php echo $k; ?>&by=<?php echo $by; ?>&sort=<?php echo $sort; ?>&word=<?php echo "hyponymys"; ?>&hypernull=<?php echo $hypernull; ?>&hyponull=<?php echo $hyponull; ?>" class="button">specialize using hyponymys?</a>   
              <?php  
              
-              }// kleinei to if synonull
+              }
              
 
            
 
 
-              if(($hypernull == 2) &&($hyponull == 1)){  //exei paththei to yperwnyma kai den exei apotelesma
+              if(($hypernull == 2) &&($hyponull == 1)){ 
              echo "<b>No results found!</b><br><br>";
 
               
@@ -289,7 +289,7 @@
 
               }
 
-              if(($hypernull == 1) && ($hyponull == 2)){  //exei paththei to ypwnyma kai den exei apotelesma
+              if(($hypernull == 1) && ($hyponull == 2)){  
               
               echo "<b>No results found!</b><br><br>";
               
@@ -300,17 +300,17 @@
 
               }
 
-             if(($hypernull == 2) && ($hyponull == 2)){ //exoun pathtei kai ta dyo kai den exoun apotelesma
+             if(($hypernull == 2) && ($hyponull == 2)){ 
 
                         echo "<b>Sorry, no results were found for ".implode(", ",$terms).", synonymys, hypernymys or hyponymys!<br>Please try a different search!</b><br><br>";
              }          
            
-   }//kleinei k
+   }
 
      
    
     odbc_close($con);
-   }//kleinei to if conn
+   }
     else {
     print "<p>Failed to connect!</p>\n";
   }
