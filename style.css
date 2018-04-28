@@ -1,0 +1,36 @@
+
+h4{
+    color: blue; 
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+  
+}
+
+h5{
+
+  font-style: italic;
+  font-weight: normal;
+}
+
+h6{
+
+     font-style: italic;
+    font-weight: normal;
+    font-size: 90%;
+
+}
+
+.button {
+    background-color: #d6d6c2;
+    border:none;
+    color: blue;
+    padding: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-style: italic;
+
+    
+}

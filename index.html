@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+	<title>Search Engine-Home</title>
+</head>
+<body background = "images/back4.png">
+	<i style="color:#3d3d29;">By Kapetanakis Fanourios</i>
+
+   <center> <h1>Search Engine</h1> 
+     <form action="./search.php" method="get">
+     	<input type="text" name="k" size="50"/>
+     	 <b>Sort by</b>
+     	<select name="by">
+       <option value="">None</option>
+       <option value="ArticleID">Id</option>
+       <option value="ArticleTitle">Title</option>
+       <option value="ArticleBody">Body</option>
+       <option value="ArticlePublishDate">PublishDate</option>
+       <option value="ArticleDescription">Description</option>
+       <option value="ArticleKeywords">Keywords</option>
+       <option value="AuthorFullName">Author</option>
+      </select>
+  <select name="sort">
+  <option value="">None</option>
+  <option value="Asc">Asc</option>
+  <option value="Desc">Desc</option>
+  </select>
+ <input type="submit" value="Search" />
+     </form>
+   </center>
+
+</body>
+</html>
